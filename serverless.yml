@@ -1,0 +1,18 @@
+service: aws-mongoose-express
+frameworkVersion: '3'
+useDotenv: true
+
+plugins:
+ - serverless-offline
+ 
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    DB: ${env:DB}
+  
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: 'GET /users'
